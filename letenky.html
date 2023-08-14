@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="./letenky/style.css" />
+    <title>Letenky - Bootstrap</title>
+</head>
+
+<body>
+    <div class="col6" onsubmit="event.preventDefault();">
+        <form class="col-lg-3 col-sm-12">
+            <fieldset>
+                <legend>Cíl a počet letenek (osob)</legend>
+                <select class="form-select" aria-label="Select destination - ticket" id="letenky" name="letenky"
+                    form="letenky" onchange="vypocet()">
+                    <option selected>Vyberte destinaci</option>
+                    <option value="Praha" id="Praha">Praha 500 Kč</option>
+                    <option value="Frankfurt" id="Frankfurt">Frankfurt 3000 Kč</option>
+                    <option value="NewYork" id="NewYork">New York 15000 Kč</option>
+                    <option value="Sydney" id="Sydney">Sydney 30000 Kč</option>
+                </select>
+                <div class="pocetLetenekText">Počet letenek (osob)</div>
+                <input type="number" id="pocetLetenek" min="0" max="10" class="pocetLetenek form-control"
+                    onchange="vypocet()">
+            </fieldset>
+
+            <fieldset>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="zpatecniLetenka"
+                        onchange="vypocet()"> 
+                    <label class="form-check-label" for="zpatecniLetenka">Zpáteční letenka</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Třída</legend>
+                <div class="form-check form-switch">
+                    <input class="trida form-check-input" name="trida" type="checkbox" role="switch"
+                        id="economy" checked onchange="vypocet()" onclick="onlyOne(this)">
+                    <label class="form-check-label" for="economy">Economy class (bez přirážky)</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="trida form-check-input" name="trida" type="checkbox" role="switch"
+                        id="business" onchange="vypocet()" onclick="onlyOne(this)">
+                    <label class="form-check-label" for="business">Business class (+25% k ceně)</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="trida form-check-input" name="trida" type="checkbox" role="switch"
+                        id="royal" onchange="vypocet()" onclick="onlyOne(this)">
+                    <label class="form-check-label" for="royal">Royal class (+ 50% k ceně)</label>
+                </div>
+                <script src="./letenky/oneCheckbox.js"></script>
+            </fieldset>
+
+            <fieldset>
+                <legend>Celková cena</legend>
+                <script src="./letenky/vypocetCeny.js"></script>
+                <!-- <input type="submit" value="Vypočítej" onclick="vypocet();"> -->
+                <div id="cenaCelkem"></div>
+            </fieldset>
+
+            <fieldset class="rozpocet">
+                <legend>Váš celkový rozpočet</legend>
+                <input type="number" name="rozpocet" id="rozpocet" min="0" >Kč
+                <div id="srovnani" class="result"></div>
+                <input type="submit" class="myButton" value="Srovnat s cenou" onclick="srovnaniRozpoctuCeny ();">
+                <script src="./letenky/srovnani.js"></script>
+            </fieldset>
+
+            
+                <legend>Poznámky</legend>
+
+                <div class="poznamky form-floating">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="poznamky"></textarea>
+                    <label for="floatingTextarea">Poznámky</label>
+                    <script src="./letenky/special.js"></script>
+                </div>
+                
+            <button class="myButton " onclick="window.location.href = window.location.href">Refresh & Reset</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
