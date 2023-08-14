@@ -1,0 +1,2 @@
+# letenky
+school exercise - JavaScript
